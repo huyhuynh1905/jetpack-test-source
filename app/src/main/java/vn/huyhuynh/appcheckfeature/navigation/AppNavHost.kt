@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import vn.huyhuynh.appcheckfeature.presenter.main.MainScreen
 import vn.huyhuynh.appcheckfeature.presenter.ocr.CameraOcrPreview
 import vn.huyhuynh.appcheckfeature.presenter.ocr.OcrScreen
 
@@ -18,7 +19,10 @@ val LocalNavController = staticCompositionLocalOf<NavHostController> {
 fun ComposeNavigationApp() {
     val navController = rememberNavController()
     CompositionLocalProvider(LocalNavController provides navController) {
-        NavHost(navController = navController, startDestination = Screen.OcrScreen.route) {
+        NavHost(navController = navController, startDestination = Screen.MainScreen.route) {
+            composable(Screen.MainScreen.route) {
+                MainScreen()
+            }
             composable(Screen.OcrScreen.route) {
                 OcrScreen()
             }
