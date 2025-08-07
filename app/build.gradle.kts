@@ -72,4 +72,8 @@ dependencies {
 
     // Coil (hiển thị ảnh)
     implementation(libs.coil.compose)
+
+    //emv
+    implementation(libs.emvnfccard.library)
+    implementation(libs.commons.lang3)
 }
