@@ -42,5 +42,16 @@ fun MainScreen(){
         ) {
             Text("Read EMV Card Info")
         }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Button(
+            onClick = {
+                navController.navigate(Screen.ContentProvider.route)
+            },
+            enabled = true
+        ) {
+            Text("Content Provider")
+        }
     }
 }

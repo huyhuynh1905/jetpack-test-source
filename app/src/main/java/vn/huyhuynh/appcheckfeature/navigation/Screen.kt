@@ -5,4 +5,5 @@ sealed class Screen(val route: String) {
     object OcrScreen : Screen("OcrScreen")
     object CameraOcrPreview : Screen("CameraOcrPreview")
     object EmvCardReader : Screen("EmvCardReader")
+    object ContentProvider : Screen("ContentProvider")
 }

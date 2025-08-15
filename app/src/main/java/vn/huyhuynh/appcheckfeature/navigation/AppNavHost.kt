@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import vn.huyhuynh.appcheckfeature.presenter.contentprovider.ContentProviderScreen
 import vn.huyhuynh.appcheckfeature.presenter.emv.EmvCardReaderScreen
 import vn.huyhuynh.appcheckfeature.presenter.main.MainScreen
 import vn.huyhuynh.appcheckfeature.presenter.ocr.CameraOcrPreview
@@ -32,6 +33,9 @@ fun ComposeNavigationApp() {
             }
             composable(Screen.EmvCardReader.route) {
                 EmvCardReaderScreen()
+            }
+            composable(Screen.ContentProvider.route) {
+                ContentProviderScreen()
             }
         }
     }

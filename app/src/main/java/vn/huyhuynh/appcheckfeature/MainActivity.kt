@@ -25,13 +25,15 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this)
-        val isNfcEnabled = nfcAdapter.isEnabled == true
-        Log.d("MainActivity"," nfcAdapter isNfcEnabled: $isNfcEnabled")
-        pendingIntent = PendingIntent.getActivity(
-            this, 0,
-            Intent(this, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),
-            PendingIntent.FLAG_MUTABLE
-        )
+        if(::nfcAdapter.isInitialized) {
+            val isNfcEnabled = nfcAdapter.isEnabled == true
+            Log.d("MainActivity", " nfcAdapter isNfcEnabled: $isNfcEnabled")
+            pendingIntent = PendingIntent.getActivity(
+                this, 0,
+                Intent(this, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),
+                PendingIntent.FLAG_MUTABLE
+            )
+        }
 
         setContent {
             AppCheckFeatureTheme {
@@ -42,12 +44,18 @@ class MainActivity : ComponentActivity() {
 
     override fun onResume() {
         super.onResume()
-        nfcAdapter.enableForegroundDispatch(this, pendingIntent, null, null)
+        if(::nfcAdapter.isInitialized) {
+            nfcAdapter.enableForegroundDispatch(this, pendingIntent, null, null)
+
+        }
     }
 
     override fun onPause() {
         super.onPause()
-        nfcAdapter.disableForegroundDispatch(this)
+        if(::nfcAdapter.isInitialized) {
+            nfcAdapter.disableForegroundDispatch(this)
+
+        }
     }
 
     override fun onNewIntent(intent: Intent) {
