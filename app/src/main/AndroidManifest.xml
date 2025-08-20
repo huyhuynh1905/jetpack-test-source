@@ -9,6 +9,12 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.NFC" />
     <uses-feature android:name="android.hardware.nfc" android:required="true" />
+    <!-- Cho phép app client thấy app provider trên Android 11+ -->
+    <queries>
+        <!-- Cho Android 11+ thấy cả hai flavor provider -->
+        <package android:name="vn.com.unit.vinbus.hcm_city.uat" />
+        <package android:name="vn.com.unit.vinbus.hcm_city" />
+    </queries>
 
     <application
         android:allowBackup="true"
